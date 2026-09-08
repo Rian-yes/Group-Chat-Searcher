@@ -1,0 +1,1480 @@
+{
+  "total_queries": 40,
+  "top1_accuracy": 0.9,
+  "recall_at_3": 0.95,
+  "recall_at_5": 1.0,
+  "mrr": 0.9333,
+  "avg_latency_ms": 484.7,
+  "categories": {
+    "semantic": {
+      "total": 10,
+      "top1_accuracy": 0.8,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "mrr": 0.8833
+    },
+    "attributed": {
+      "total": 10,
+      "top1_accuracy": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "mrr": 1.0
+    },
+    "temporal": {
+      "total": 10,
+      "top1_accuracy": 0.8,
+      "recall_at_3": 0.8,
+      "recall_at_5": 1.0,
+      "mrr": 0.85
+    },
+    "zero_lexical_overlap": {
+      "total": 10,
+      "top1_accuracy": 1.0,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "mrr": 1.0
+    }
+  },
+  "query_evaluations": [
+    {
+      "id": "q01",
+      "category": "zero_lexical_overlap",
+      "query": "When was the vacation destination finalized?",
+      "target_message_id": "msg_1444",
+      "target_text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 3835.44,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_1444",
+          "sender": "Kabir",
+          "text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
+          "score": 0.9731
+        },
+        {
+          "rank": 2,
+          "id": "msg_1445",
+          "sender": "Kabir",
+          "text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
+          "score": 0.9731
+        },
+        {
+          "rank": 3,
+          "id": "msg_1972",
+          "sender": "Neha",
+          "text": "Manager ne chhutti sign off kardi meri, 5 days off locked in HR portal!",
+          "score": 0.8043
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "category": "zero_lexical_overlap",
+      "query": "How much money does each person need to transfer for accommodation?",
+      "target_message_id": "msg_2238",
+      "target_text": "sab log 5k advance GPay kardo mere number pe",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 489.89,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2238",
+          "sender": "Priya",
+          "text": "sab log 5k advance GPay kardo mere number pe",
+          "score": 0.7363
+        },
+        {
+          "rank": 2,
+          "id": "msg_2249",
+          "sender": "Priya",
+          "text": "All 8 advance payments of 5000 received on GPay, villa token paid to host Mr. D'Souza",
+          "score": 0.7014
+        },
+        {
+          "rank": 3,
+          "id": "msg_0525",
+          "sender": "Rohan",
+          "text": "Priya sambhalegi saara hisaab kitaab, splitwise group create kar diya hai",
+          "score": 0.5261
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "category": "zero_lexical_overlap",
+      "query": "What programming language and framework was chosen for the server?",
+      "target_message_id": "msg_3418",
+      "target_text": "Architecture lock: FastAPI backend + React Vite frontend with hybrid BM25 + ONNX vector search, no cloud lock-in",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 365.37,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_3418",
+          "sender": "Aarav",
+          "text": "Architecture lock: FastAPI backend + React Vite frontend with hybrid BM25 + ONNX vector search, no cloud lock-in",
+          "score": 1.0007
+        },
+        {
+          "rank": 2,
+          "id": "msg_3904",
+          "sender": "Sneha",
+          "text": "Final pitch deck and 2-minute video demo uploaded to submission portal",
+          "score": 0.6106
+        },
+        {
+          "rank": 3,
+          "id": "msg_3393",
+          "sender": "Aarav",
+          "text": "Hackathon submission deadline is July 5th, prize pool is 10 Lakhs, team registration done!",
+          "score": 0.5877
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "category": "zero_lexical_overlap",
+      "query": "Who will manage all financial accounts and expense splitting?",
+      "target_message_id": "msg_0525",
+      "target_text": "Priya sambhalegi saara hisaab kitaab, splitwise group create kar diya hai",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 623.77,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_0525",
+          "sender": "Rohan",
+          "text": "Priya sambhalegi saara hisaab kitaab, splitwise group create kar diya hai",
+          "score": 0.8399
+        },
+        {
+          "rank": 2,
+          "id": "msg_0497",
+          "sender": "Ananya",
+          "text": "splitwise pe hisaab clear karo pehle",
+          "score": 0.7108
+        },
+        {
+          "rank": 3,
+          "id": "msg_3231",
+          "sender": "Ananya",
+          "text": "splitwise pe hisaab clear karo pehle",
+          "score": 0.7108
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "category": "zero_lexical_overlap",
+      "query": "What time is the group gathering at the bus depot for departure?",
+      "target_message_id": "msg_2637",
+      "target_text": "Kashmere Gate ISBT pe raat ko 9 baje milna hai sabko, bus 9:45 PM sharp niklegi",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 353.53,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2637",
+          "sender": "Sneha",
+          "text": "Kashmere Gate ISBT pe raat ko 9 baje milna hai sabko, bus 9:45 PM sharp niklegi",
+          "score": 0.8296
+        },
+        {
+          "rank": 2,
+          "id": "msg_3137",
+          "sender": "Neha",
+          "text": "CS2 ya Valorant aao raat ko 11 baje",
+          "score": 0.4888
+        },
+        {
+          "rank": 3,
+          "id": "msg_2530",
+          "sender": "Neha",
+          "text": "CS2 ya Valorant aao raat ko 11 baje",
+          "score": 0.4888
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "category": "zero_lexical_overlap",
+      "query": "Did anyone arrange portable power supplies for the road trip?",
+      "target_message_id": "msg_2642",
+      "target_text": "Maine do extra 20000mAh battery pack bag me rakh liye hain tension mat lo",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 293.31,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2642",
+          "sender": "Vikram",
+          "text": "Maine do extra 20000mAh battery pack bag me rakh liye hain tension mat lo",
+          "score": 0.8071
+        },
+        {
+          "rank": 2,
+          "id": "msg_2581",
+          "sender": "Neha",
+          "text": "JBL Charge 5 main carry kar rahi hoon and curated a 12-hour roadtrip Spotify playlist",
+          "score": 0.5593
+        },
+        {
+          "rank": 3,
+          "id": "msg_1768",
+          "sender": "Aarav",
+          "text": "Volvo semi-sleeper 2x2 book kar li Zingbus se, comfortable rahega overnight",
+          "score": 0.492
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "category": "zero_lexical_overlap",
+      "query": "Was the vacation leave officially approved by leadership?",
+      "target_message_id": "msg_1972",
+      "target_text": "Manager ne chhutti sign off kardi meri, 5 days off locked in HR portal!",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 320.76,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_1972",
+          "sender": "Neha",
+          "text": "Manager ne chhutti sign off kardi meri, 5 days off locked in HR portal!",
+          "score": 0.8184
+        },
+        {
+          "rank": 2,
+          "id": "msg_3375",
+          "sender": "Aarav",
+          "text": "Aarav: No direct push to main, create feature branches and require 1 approval before merging",
+          "score": 0.417
+        },
+        {
+          "rank": 3,
+          "id": "msg_2661",
+          "sender": "Ananya",
+          "text": "Checked into Riverside Cottage Manali! The view of snow peaks from the lawn is unreal",
+          "score": 0.4169
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "category": "zero_lexical_overlap",
+      "query": "Where will the road trip convoy pause for dining on the highway?",
+      "target_message_id": "msg_2648",
+      "target_text": "Murthal pe rukenge Sukhdev Dhaba pe garam paranthe aur makkhan khane",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 342.69,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2648",
+          "sender": "Ananya",
+          "text": "Murthal pe rukenge Sukhdev Dhaba pe garam paranthe aur makkhan khane",
+          "score": 0.7866
+        },
+        {
+          "rank": 2,
+          "id": "msg_2581",
+          "sender": "Neha",
+          "text": "JBL Charge 5 main carry kar rahi hoon and curated a 12-hour roadtrip Spotify playlist",
+          "score": 0.4476
+        },
+        {
+          "rank": 3,
+          "id": "msg_1693",
+          "sender": "Kabir",
+          "text": "Kabir: Hill driving night me risky hai, professional driver wali Volvo is 100x safer than self drive",
+          "score": 0.4202
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "category": "zero_lexical_overlap",
+      "query": "Which database engine was selected to store relational and embedding data?",
+      "target_message_id": "msg_3428",
+      "target_text": "pgvector hi use karenge relational + vector dono ke liye, separate cluster ka headache nahi chahiye",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 411.95,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_3428",
+          "sender": "Vikram",
+          "text": "pgvector hi use karenge relational + vector dono ke liye, separate cluster ka headache nahi chahiye",
+          "score": 0.8356
+        },
+        {
+          "rank": 2,
+          "id": "msg_3481",
+          "sender": "Vikram",
+          "text": "Vikram: External embedding APIs have 60 req/min limit, local FastEmbed ONNX will give us unlimited zero-cost inferences",
+          "score": 0.6115
+        },
+        {
+          "rank": 3,
+          "id": "msg_3782",
+          "sender": "Aarav",
+          "text": "BM25 plus embedding hybrid benchmark achieved 94% recall in under 35ms latency!",
+          "score": 0.5576
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "category": "zero_lexical_overlap",
+      "query": "What is the backup entertainment if bad weather traps everyone indoors?",
+      "target_message_id": "msg_2605",
+      "target_text": "Monopoly, Catan aur Codenames leke aa raha hoon plus projector for movies",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 365.54,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2605",
+          "sender": "Rohan",
+          "text": "Monopoly, Catan aur Codenames leke aa raha hoon plus projector for movies",
+          "score": 0.7097
+        },
+        {
+          "rank": 2,
+          "id": "msg_1401",
+          "sender": "Sneha",
+          "text": "Rishikesh me May me bohot zyada garmi hogi rafting ke alawa time, Manali weather is perfect",
+          "score": 0.4475
+        },
+        {
+          "rank": 3,
+          "id": "msg_2564",
+          "sender": "Sneha",
+          "text": "Sneha: I am buying Diamox for altitude sickness, Paracetamol, Vomistop, and ORS sachets for everyone",
+          "score": 0.3996
+        }
+      ]
+    },
+    {
+      "id": "q11",
+      "category": "semantic",
+      "query": "when did we decide on Manali",
+      "target_message_id": "msg_1445",
+      "target_text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 422.21,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_1445",
+          "sender": "Kabir",
+          "text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
+          "score": 0.9865
+        },
+        {
+          "rank": 2,
+          "id": "msg_1444",
+          "sender": "Kabir",
+          "text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
+          "score": 0.9865
+        },
+        {
+          "rank": 3,
+          "id": "msg_1589",
+          "sender": "Rohan",
+          "text": "Riverside Alpine Cottage in Old Manali book ho gaya 4 nights ke liye, wooden balconies facing river!",
+          "score": 0.7577
+        }
+      ]
+    },
+    {
+      "id": "q12",
+      "category": "semantic",
+      "query": "which hotel or cottage was booked in Old Manali",
+      "target_message_id": "msg_1589",
+      "target_text": "Riverside Alpine Cottage in Old Manali book ho gaya 4 nights ke liye, wooden balconies facing river!",
+      "rank": 2,
+      "is_top1": false,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 0.5,
+      "latency_ms": 448.0,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2661",
+          "sender": "Ananya",
+          "text": "Checked into Riverside Cottage Manali! The view of snow peaks from the lawn is unreal",
+          "score": 0.8129
+        },
+        {
+          "rank": 2,
+          "id": "msg_1589",
+          "sender": "Rohan",
+          "text": "Riverside Alpine Cottage in Old Manali book ho gaya 4 nights ke liye, wooden balconies facing river!",
+          "score": 0.7795
+        },
+        {
+          "rank": 3,
+          "id": "msg_1437",
+          "sender": "Aarav",
+          "text": "Voting poll closed: Manali got 6 votes, Goa got 2 votes. Manali wins!",
+          "score": 0.5169
+        }
+      ]
+    },
+    {
+      "id": "q13",
+      "category": "semantic",
+      "query": "what vehicle or transport did we choose to go to Himachal",
+      "target_message_id": "msg_1768",
+      "target_text": "Volvo semi-sleeper 2x2 book kar li Zingbus se, comfortable rahega overnight",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 451.05,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_1768",
+          "sender": "Aarav",
+          "text": "Volvo semi-sleeper 2x2 book kar li Zingbus se, comfortable rahega overnight",
+          "score": 0.9165
+        },
+        {
+          "rank": 2,
+          "id": "msg_1444",
+          "sender": "Kabir",
+          "text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
+          "score": 0.746
+        },
+        {
+          "rank": 3,
+          "id": "msg_1445",
+          "sender": "Kabir",
+          "text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
+          "score": 0.746
+        }
+      ]
+    },
+    {
+      "id": "q14",
+      "category": "semantic",
+      "query": "which rental villa was chosen in Goa",
+      "target_message_id": "msg_2205",
+      "target_text": "Villa Nirvana Anjuna lock kardi, 4BHK with private pool and garden gazebo",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 288.41,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2205",
+          "sender": "Priya",
+          "text": "Villa Nirvana Anjuna lock kardi, 4BHK with private pool and garden gazebo",
+          "score": 0.9657
+        },
+        {
+          "rank": 2,
+          "id": "msg_2149",
+          "sender": "Priya",
+          "text": "Total Goa estimate including flight, villa, scooty and food is approx 22k to 25k per head",
+          "score": 0.7996
+        },
+        {
+          "rank": 3,
+          "id": "msg_2115",
+          "sender": "Rohan",
+          "text": "Rohan: Goa flights are currently 4.2k on MakeMyTrip, prices will spike past 8k if we delay",
+          "score": 0.703
+        }
+      ]
+    },
+    {
+      "id": "q15",
+      "category": "semantic",
+      "query": "how is the hackathon project being deployed",
+      "target_message_id": "msg_3555",
+      "target_text": "Docker compose ready hai, single command deploy on any 5 dollar VPS or local machine",
+      "rank": 3,
+      "is_top1": false,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 0.3333333333333333,
+      "latency_ms": 371.17,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_3393",
+          "sender": "Aarav",
+          "text": "Hackathon submission deadline is July 5th, prize pool is 10 Lakhs, team registration done!",
+          "score": 0.7665
+        },
+        {
+          "rank": 2,
+          "id": "msg_3904",
+          "sender": "Sneha",
+          "text": "Final pitch deck and 2-minute video demo uploaded to submission portal",
+          "score": 0.7193
+        },
+        {
+          "rank": 3,
+          "id": "msg_3555",
+          "sender": "Vikram",
+          "text": "Docker compose ready hai, single command deploy on any 5 dollar VPS or local machine",
+          "score": 0.6507
+        }
+      ]
+    },
+    {
+      "id": "q16",
+      "category": "semantic",
+      "query": "what cafe did Ananya recommend for breakfast in Manali",
+      "target_message_id": "msg_2441",
+      "target_text": "Cafe 1947 in Old Manali is mandatory for trout and wood-fired pizza with river view",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 374.37,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2441",
+          "sender": "Ananya",
+          "text": "Cafe 1947 in Old Manali is mandatory for trout and wood-fired pizza with river view",
+          "score": 1.0653
+        },
+        {
+          "rank": 2,
+          "id": "msg_0655",
+          "sender": "Ananya",
+          "text": "Blue Tokai in Khan Market has new hazelnut cold brew, best workspace in central Delhi",
+          "score": 0.8417
+        },
+        {
+          "rank": 3,
+          "id": "msg_2648",
+          "sender": "Ananya",
+          "text": "Murthal pe rukenge Sukhdev Dhaba pe garam paranthe aur makkhan khane",
+          "score": 0.8102
+        }
+      ]
+    },
+    {
+      "id": "q17",
+      "category": "semantic",
+      "query": "what is our total budget estimate for the Goa trip",
+      "target_message_id": "msg_2149",
+      "target_text": "Total Goa estimate including flight, villa, scooty and food is approx 22k to 25k per head",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 352.16,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2149",
+          "sender": "Priya",
+          "text": "Total Goa estimate including flight, villa, scooty and food is approx 22k to 25k per head",
+          "score": 0.9187
+        },
+        {
+          "rank": 2,
+          "id": "msg_1370",
+          "sender": "Priya",
+          "text": "Priya: Guys max 15k per head rakhna Manali trip ka, usse zyada exceeds everyone's monthly savings",
+          "score": 0.6107
+        },
+        {
+          "rank": 3,
+          "id": "msg_2115",
+          "sender": "Rohan",
+          "text": "Rohan: Goa flights are currently 4.2k on MakeMyTrip, prices will spike past 8k if we delay",
+          "score": 0.5721
+        }
+      ]
+    },
+    {
+      "id": "q18",
+      "category": "semantic",
+      "query": "what music playlist or speaker should we bring",
+      "target_message_id": "msg_2581",
+      "target_text": "JBL Charge 5 main carry kar rahi hoon and curated a 12-hour roadtrip Spotify playlist",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 346.18,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2581",
+          "sender": "Neha",
+          "text": "JBL Charge 5 main carry kar rahi hoon and curated a 12-hour roadtrip Spotify playlist",
+          "score": 0.7962
+        },
+        {
+          "rank": 2,
+          "id": "msg_2564",
+          "sender": "Sneha",
+          "text": "Sneha: I am buying Diamox for altitude sickness, Paracetamol, Vomistop, and ORS sachets for everyone",
+          "score": 0.3989
+        },
+        {
+          "rank": 3,
+          "id": "msg_0653",
+          "sender": "Neha",
+          "text": "Good morning guysss",
+          "score": 0.3926
+        }
+      ]
+    },
+    {
+      "id": "q19",
+      "category": "semantic",
+      "query": "why did Sneha reject Rishikesh for the vacation",
+      "target_message_id": "msg_1401",
+      "target_text": "Rishikesh me May me bohot zyada garmi hogi rafting ke alawa time, Manali weather is perfect",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 329.83,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_1401",
+          "sender": "Sneha",
+          "text": "Rishikesh me May me bohot zyada garmi hogi rafting ke alawa time, Manali weather is perfect",
+          "score": 0.9802
+        },
+        {
+          "rank": 2,
+          "id": "msg_3904",
+          "sender": "Sneha",
+          "text": "Final pitch deck and 2-minute video demo uploaded to submission portal",
+          "score": 0.6358
+        },
+        {
+          "rank": 3,
+          "id": "msg_2513",
+          "sender": "Sneha",
+          "text": "production pe bug aa gaya rip weekend",
+          "score": 0.6297
+        }
+      ]
+    },
+    {
+      "id": "q20",
+      "category": "semantic",
+      "query": "what frontend UI library or styling did we decide for the dashboard",
+      "target_message_id": "msg_3470",
+      "target_text": "Tailwind CSS with Lucide icons use karenge, no heavy component libraries to keep bundle tiny",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 404.08,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_3470",
+          "sender": "Aarav",
+          "text": "Tailwind CSS with Lucide icons use karenge, no heavy component libraries to keep bundle tiny",
+          "score": 0.8603
+        },
+        {
+          "rank": 2,
+          "id": "msg_3418",
+          "sender": "Aarav",
+          "text": "Architecture lock: FastAPI backend + React Vite frontend with hybrid BM25 + ONNX vector search, no cloud lock-in",
+          "score": 0.75
+        },
+        {
+          "rank": 3,
+          "id": "msg_3904",
+          "sender": "Sneha",
+          "text": "Final pitch deck and 2-minute video demo uploaded to submission portal",
+          "score": 0.5938
+        }
+      ]
+    },
+    {
+      "id": "q21",
+      "category": "attributed",
+      "query": "what did Priya say about the budget",
+      "target_message_id": "msg_1370",
+      "target_text": "Priya: Guys max 15k per head rakhna Manali trip ka, usse zyada exceeds everyone's monthly savings",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 321.76,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_1370",
+          "sender": "Priya",
+          "text": "Priya: Guys max 15k per head rakhna Manali trip ka, usse zyada exceeds everyone's monthly savings",
+          "score": 1.0284
+        },
+        {
+          "rank": 2,
+          "id": "msg_2535",
+          "sender": "Priya",
+          "text": "Priya: Delhi se hi Maggi packs, chai patti, coffee and snacks leke chalte hain to save resort markup",
+          "score": 0.6584
+        },
+        {
+          "rank": 3,
+          "id": "msg_3144",
+          "sender": "Priya",
+          "text": "splitwise pe hisaab clear karo pehle",
+          "score": 0.6539
+        }
+      ]
+    },
+    {
+      "id": "q22",
+      "category": "attributed",
+      "query": "what did Rohan suggest about booking flights early",
+      "target_message_id": "msg_2115",
+      "target_text": "Rohan: Goa flights are currently 4.2k on MakeMyTrip, prices will spike past 8k if we delay",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 321.78,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2115",
+          "sender": "Rohan",
+          "text": "Rohan: Goa flights are currently 4.2k on MakeMyTrip, prices will spike past 8k if we delay",
+          "score": 0.9938
+        },
+        {
+          "rank": 2,
+          "id": "msg_1589",
+          "sender": "Rohan",
+          "text": "Riverside Alpine Cottage in Old Manali book ho gaya 4 nights ke liye, wooden balconies facing river!",
+          "score": 0.7717
+        },
+        {
+          "rank": 3,
+          "id": "msg_3630",
+          "sender": "Rohan",
+          "text": "Forwarded: Flat 50% discount on flight tickets booking using HDFC credit card code FLY50",
+          "score": 0.761
+        }
+      ]
+    },
+    {
+      "id": "q23",
+      "category": "attributed",
+      "query": "what did Sneha say about mountain sickness and medicines",
+      "target_message_id": "msg_2564",
+      "target_text": "Sneha: I am buying Diamox for altitude sickness, Paracetamol, Vomistop, and ORS sachets for everyone",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 375.33,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2564",
+          "sender": "Sneha",
+          "text": "Sneha: I am buying Diamox for altitude sickness, Paracetamol, Vomistop, and ORS sachets for everyone",
+          "score": 1.093
+        },
+        {
+          "rank": 2,
+          "id": "msg_0939",
+          "sender": "Sneha",
+          "text": "Shawarma craving ho rahi hai bohot gandi",
+          "score": 0.6387
+        },
+        {
+          "rank": 3,
+          "id": "msg_1459",
+          "sender": "Sneha",
+          "text": "Shawarma craving ho rahi hai bohot gandi",
+          "score": 0.6387
+        }
+      ]
+    },
+    {
+      "id": "q24",
+      "category": "attributed",
+      "query": "what did Vikram mention about API rate limits",
+      "target_message_id": "msg_3481",
+      "target_text": "Vikram: External embedding APIs have 60 req/min limit, local FastEmbed ONNX will give us unlimited zero-cost inferences",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 499.84,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_3481",
+          "sender": "Vikram",
+          "text": "Vikram: External embedding APIs have 60 req/min limit, local FastEmbed ONNX will give us unlimited zero-cost inferences",
+          "score": 1.043
+        },
+        {
+          "rank": 2,
+          "id": "msg_2556",
+          "sender": "Vikram",
+          "text": "PR review kardo koi time mile toh",
+          "score": 0.6707
+        },
+        {
+          "rank": 3,
+          "id": "msg_0333",
+          "sender": "Vikram",
+          "text": "PR review kardo koi time mile toh",
+          "score": 0.6707
+        }
+      ]
+    },
+    {
+      "id": "q25",
+      "category": "attributed",
+      "query": "what did Kabir post about bringing warm jackets",
+      "target_message_id": "msg_2505",
+      "target_text": "Kabir: Rohtang Pass pe minus temperature hoga, Decathlon wali heavy down jacket compulsory hai",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 502.51,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2505",
+          "sender": "Kabir",
+          "text": "Kabir: Rohtang Pass pe minus temperature hoga, Decathlon wali heavy down jacket compulsory hai",
+          "score": 1.0401
+        },
+        {
+          "rank": 2,
+          "id": "msg_4071",
+          "sender": "Kabir",
+          "text": "Shawarma craving ho rahi hai bohot gandi",
+          "score": 0.8424
+        },
+        {
+          "rank": 3,
+          "id": "msg_3465",
+          "sender": "Kabir",
+          "text": "Shawarma craving ho rahi hai bohot gandi",
+          "score": 0.8424
+        }
+      ]
+    },
+    {
+      "id": "q26",
+      "category": "attributed",
+      "query": "what did Ananya say about sunset photography in Goa",
+      "target_message_id": "msg_2292",
+      "target_text": "Ananya: Thalassa at Siolim or Vagator cliff is unskippable for sunset golden hour photos",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 350.98,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2292",
+          "sender": "Ananya",
+          "text": "Ananya: Thalassa at Siolim or Vagator cliff is unskippable for sunset golden hour photos",
+          "score": 1.0492
+        },
+        {
+          "rank": 2,
+          "id": "msg_0196",
+          "sender": "Ananya",
+          "text": "kal subah gym kaun chalega?",
+          "score": 0.6605
+        },
+        {
+          "rank": 3,
+          "id": "msg_2634",
+          "sender": "Ananya",
+          "text": "kal subah gym kaun chalega?",
+          "score": 0.6605
+        }
+      ]
+    },
+    {
+      "id": "q27",
+      "category": "attributed",
+      "query": "what did Aarav say about git branching strategy",
+      "target_message_id": "msg_3375",
+      "target_text": "Aarav: No direct push to main, create feature branches and require 1 approval before merging",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 387.74,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_3375",
+          "sender": "Aarav",
+          "text": "Aarav: No direct push to main, create feature branches and require 1 approval before merging",
+          "score": 1.1394
+        },
+        {
+          "rank": 2,
+          "id": "msg_4084",
+          "sender": "Aarav",
+          "text": "We won 2nd runner up at the hackathon! Celebration dinner at Big Chill Cafe this Saturday 8 PM on me",
+          "score": 0.7129
+        },
+        {
+          "rank": 3,
+          "id": "msg_3393",
+          "sender": "Aarav",
+          "text": "Hackathon submission deadline is July 5th, prize pool is 10 Lakhs, team registration done!",
+          "score": 0.701
+        }
+      ]
+    },
+    {
+      "id": "q28",
+      "category": "attributed",
+      "query": "what did Neha say about renting two-wheelers in Goa",
+      "target_message_id": "msg_2318",
+      "target_text": "Neha: Scooty rent at Madgaon station is 400 per day, we need 4 Activas for 8 people",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 367.4,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2318",
+          "sender": "Neha",
+          "text": "Neha: Scooty rent at Madgaon station is 400 per day, we need 4 Activas for 8 people",
+          "score": 1.061
+        },
+        {
+          "rank": 2,
+          "id": "msg_1760",
+          "sender": "Neha",
+          "text": "kal subah gym kaun chalega?",
+          "score": 0.6862
+        },
+        {
+          "rank": 3,
+          "id": "msg_4099",
+          "sender": "Neha",
+          "text": "kal subah gym kaun chalega?",
+          "score": 0.6862
+        }
+      ]
+    },
+    {
+      "id": "q29",
+      "category": "attributed",
+      "query": "what did Priya say about grocery shopping for the cottage",
+      "target_message_id": "msg_2535",
+      "target_text": "Priya: Delhi se hi Maggi packs, chai patti, coffee and snacks leke chalte hain to save resort markup",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 421.32,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2535",
+          "sender": "Priya",
+          "text": "Priya: Delhi se hi Maggi packs, chai patti, coffee and snacks leke chalte hain to save resort markup",
+          "score": 0.6583
+        },
+        {
+          "rank": 2,
+          "id": "msg_3450",
+          "sender": "Priya",
+          "text": "standup me manager ne bohot paka diya",
+          "score": 0.6496
+        },
+        {
+          "rank": 3,
+          "id": "msg_2345",
+          "sender": "Priya",
+          "text": "standup me manager ne bohot paka diya",
+          "score": 0.6496
+        }
+      ]
+    },
+    {
+      "id": "q30",
+      "category": "attributed",
+      "query": "what did Kabir reply when asked about driving in the hills",
+      "target_message_id": "msg_1693",
+      "target_text": "Kabir: Hill driving night me risky hai, professional driver wali Volvo is 100x safer than self drive",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 489.81,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_1693",
+          "sender": "Kabir",
+          "text": "Kabir: Hill driving night me risky hai, professional driver wali Volvo is 100x safer than self drive",
+          "score": 0.9574
+        },
+        {
+          "rank": 2,
+          "id": "msg_1498",
+          "sender": "Kabir",
+          "text": "driving abhi",
+          "score": 0.8673
+        },
+        {
+          "rank": 3,
+          "id": "msg_0818",
+          "sender": "Kabir",
+          "text": "driving abhi",
+          "score": 0.8673
+        }
+      ]
+    },
+    {
+      "id": "q31",
+      "category": "temporal",
+      "query": "what did we discuss in the third week of March",
+      "target_message_id": "msg_1437",
+      "target_text": "Voting poll closed: Manali got 6 votes, Goa got 2 votes. Manali wins!",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 330.1,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_1437",
+          "sender": "Aarav",
+          "text": "Voting poll closed: Manali got 6 votes, Goa got 2 votes. Manali wins!",
+          "score": 1.1618
+        },
+        {
+          "rank": 2,
+          "id": "msg_1546",
+          "sender": "Neha",
+          "text": "Weekend plan kya hai batao?",
+          "score": 0.8335
+        },
+        {
+          "rank": 3,
+          "id": "msg_1291",
+          "sender": "Kabir",
+          "text": "Weekend plan kya hai batao?",
+          "score": 0.8332
+        }
+      ]
+    },
+    {
+      "id": "q32",
+      "category": "temporal",
+      "query": "what was agreed on April 22 regarding payments",
+      "target_message_id": "msg_2249",
+      "target_text": "All 8 advance payments of 5000 received on GPay, villa token paid to host Mr. D'Souza",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 352.88,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2249",
+          "sender": "Priya",
+          "text": "All 8 advance payments of 5000 received on GPay, villa token paid to host Mr. D'Souza",
+          "score": 1.1457
+        },
+        {
+          "rank": 2,
+          "id": "msg_2205",
+          "sender": "Priya",
+          "text": "Villa Nirvana Anjuna lock kardi, 4BHK with private pool and garden gazebo",
+          "score": 1.0591
+        },
+        {
+          "rank": 3,
+          "id": "msg_2238",
+          "sender": "Priya",
+          "text": "sab log 5k advance GPay kardo mere number pe",
+          "score": 1.0536
+        }
+      ]
+    },
+    {
+      "id": "q33",
+      "category": "temporal",
+      "query": "what happened on May 10 during the trip",
+      "target_message_id": "msg_2661",
+      "target_text": "Checked into Riverside Cottage Manali! The view of snow peaks from the lawn is unreal",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 328.34,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2661",
+          "sender": "Ananya",
+          "text": "Checked into Riverside Cottage Manali! The view of snow peaks from the lawn is unreal",
+          "score": 1.1308
+        },
+        {
+          "rank": 2,
+          "id": "msg_2662",
+          "sender": "Neha",
+          "text": "kya baat hai",
+          "score": 0.9221
+        },
+        {
+          "rank": 3,
+          "id": "msg_2663",
+          "sender": "Aarav",
+          "text": "kya baat hai",
+          "score": 0.9197
+        }
+      ]
+    },
+    {
+      "id": "q34",
+      "category": "temporal",
+      "query": "what was announced on June 11 about the hackathon",
+      "target_message_id": "msg_3393",
+      "target_text": "Hackathon submission deadline is July 5th, prize pool is 10 Lakhs, team registration done!",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 417.88,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_3393",
+          "sender": "Aarav",
+          "text": "Hackathon submission deadline is July 5th, prize pool is 10 Lakhs, team registration done!",
+          "score": 1.2446
+        },
+        {
+          "rank": 2,
+          "id": "msg_3430",
+          "sender": "Ananya",
+          "text": "5 min me call karta hoon",
+          "score": 1.037
+        },
+        {
+          "rank": 3,
+          "id": "msg_3398",
+          "sender": "Sneha",
+          "text": "hnji",
+          "score": 0.9183
+        }
+      ]
+    },
+    {
+      "id": "q35",
+      "category": "temporal",
+      "query": "what did we plan on January 26 holiday",
+      "target_message_id": "msg_0215",
+      "target_text": "Republic Day brunch at Hauz Khas Social tomorrow at 1 PM, anyone free?",
+      "rank": 4,
+      "is_top1": false,
+      "is_top3": false,
+      "is_top5": true,
+      "reciprocal_rank": 0.25,
+      "latency_ms": 392.89,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_0228",
+          "sender": "Kabir",
+          "text": "Weekend plan kya hai batao?",
+          "score": 1.0207
+        },
+        {
+          "rank": 2,
+          "id": "msg_0244",
+          "sender": "Ananya",
+          "text": "Weekend plan kya hai batao?",
+          "score": 0.968
+        },
+        {
+          "rank": 3,
+          "id": "msg_0224",
+          "sender": "Aarav",
+          "text": "kal subah gym kaun chalega?",
+          "score": 0.8241
+        }
+      ]
+    },
+    {
+      "id": "q36",
+      "category": "temporal",
+      "query": "what cafe visit was shared on Valentine's week in February",
+      "target_message_id": "msg_0655",
+      "target_text": "Blue Tokai in Khan Market has new hazelnut cold brew, best workspace in central Delhi",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 408.63,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_0655",
+          "sender": "Ananya",
+          "text": "Blue Tokai in Khan Market has new hazelnut cold brew, best workspace in central Delhi",
+          "score": 1.1019
+        },
+        {
+          "rank": 2,
+          "id": "msg_0662",
+          "sender": "Aarav",
+          "text": "Weekend plan kya hai batao?",
+          "score": 0.9751
+        },
+        {
+          "rank": 3,
+          "id": "msg_0501",
+          "sender": "Ananya",
+          "text": "Weekend plan kya hai batao?",
+          "score": 0.9733
+        }
+      ]
+    },
+    {
+      "id": "q37",
+      "category": "temporal",
+      "query": "what was discussed in late May after returning from Himachal",
+      "target_message_id": "msg_2893",
+      "target_text": "Manali photo dump Google Drive folder link shared with 450 raw photos, download before Friday",
+      "rank": 4,
+      "is_top1": false,
+      "is_top3": false,
+      "is_top5": true,
+      "reciprocal_rank": 0.25,
+      "latency_ms": 707.0,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_2984",
+          "sender": "Aarav",
+          "text": "Forwarded: Himachal road status: Manali-Leh highway officially open for tourists",
+          "score": 1.0276
+        },
+        {
+          "rank": 2,
+          "id": "msg_3063",
+          "sender": "Vikram",
+          "text": "Forwarded: Himachal road status: Manali-Leh highway officially open for tourists",
+          "score": 1.0258
+        },
+        {
+          "rank": 3,
+          "id": "msg_3124",
+          "sender": "Vikram",
+          "text": "Forwarded: Himachal road status: Manali-Leh highway officially open for tourists",
+          "score": 1.0258
+        }
+      ]
+    },
+    {
+      "id": "q38",
+      "category": "temporal",
+      "query": "what was tested on June 28 regarding search performance",
+      "target_message_id": "msg_3782",
+      "target_text": "BM25 plus embedding hybrid benchmark achieved 94% recall in under 35ms latency!",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 399.59,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_3782",
+          "sender": "Aarav",
+          "text": "BM25 plus embedding hybrid benchmark achieved 94% recall in under 35ms latency!",
+          "score": 0.9582
+        },
+        {
+          "rank": 2,
+          "id": "msg_3775",
+          "sender": "Kabir",
+          "text": "zoom call pe 2 ghante waste ho gaye",
+          "score": 0.8879
+        },
+        {
+          "rank": 3,
+          "id": "msg_3797",
+          "sender": "Ananya",
+          "text": "Weekend plan kya hai batao?",
+          "score": 0.8821
+        }
+      ]
+    },
+    {
+      "id": "q39",
+      "category": "temporal",
+      "query": "what did we discuss in the first week of July before demo day",
+      "target_message_id": "msg_3904",
+      "target_text": "Final pitch deck and 2-minute video demo uploaded to submission portal",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 422.89,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_3904",
+          "sender": "Sneha",
+          "text": "Final pitch deck and 2-minute video demo uploaded to submission portal",
+          "score": 1.1299
+        },
+        {
+          "rank": 2,
+          "id": "msg_3888",
+          "sender": "Kabir",
+          "text": "Weekend plan kya hai batao?",
+          "score": 0.8957
+        },
+        {
+          "rank": 3,
+          "id": "msg_3997",
+          "sender": "Ananya",
+          "text": "Weekend plan kya hai batao?",
+          "score": 0.8949
+        }
+      ]
+    },
+    {
+      "id": "q40",
+      "category": "temporal",
+      "query": "what celebratory plan was made in mid July",
+      "target_message_id": "msg_4084",
+      "target_text": "We won 2nd runner up at the hackathon! Celebration dinner at Big Chill Cafe this Saturday 8 PM on me",
+      "rank": 1,
+      "is_top1": true,
+      "is_top3": true,
+      "is_top5": true,
+      "reciprocal_rank": 1.0,
+      "latency_ms": 399.61,
+      "top_retrieved": [
+        {
+          "rank": 1,
+          "id": "msg_4084",
+          "sender": "Aarav",
+          "text": "We won 2nd runner up at the hackathon! Celebration dinner at Big Chill Cafe this Saturday 8 PM on me",
+          "score": 1.0834
+        },
+        {
+          "rank": 2,
+          "id": "msg_4085",
+          "sender": "Neha",
+          "text": "5 min me call karta hoon",
+          "score": 1.0713
+        },
+        {
+          "rank": 3,
+          "id": "msg_4086",
+          "sender": "Kabir",
+          "text": "\ud83d\udd25",
+          "score": 0.9213
+        }
+      ]
+    }
+  ]
+}
