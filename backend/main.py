@@ -21,8 +21,9 @@ if str(backend_dir) not in sys.path:
 
 from fastapi import FastAPI, HTTPException, Query, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
-
 from rag_engine import get_rag_engine, normalize_hinglish, BM25Index
 from evaluation import evaluate_rag_engine
 app = FastAPI(
@@ -237,7 +238,29 @@ def parse_whatsapp_export(text: str) -> List[Dict[str, Any]]:
             msg_id += 1
 
     return messages
+# --- Frontend Static Mount & SPA Fallback ---
+DIST_DIR = Path(__file__).resolve().parent.parent / "frontend" / "dist"
+if (DIST_DIR / "assets").exists():
+    app.mount("/assets", StaticFiles(directory=str(DIST_DIR / "assets")), name="frontend_assets")
 
+@app.get("/")
+async def root():
+    index_file = DIST_DIR / "index.html"
+    if index_file.exists():
+        return FileResponse(str(index_file))
+    return {"status": "ok", "message": "CharchaSearch API is running."}
+
+@app.get("/{full_path:path}")
+async def catch_all(full_path: str):
+    if full_path.startswith("api/"):
+        raise HTTPException(status_code=404, detail="API endpoint not found")
+    target = DIST_DIR / full_path
+    if target.exists() and target.is_file():
+        return FileResponse(str(target))
+    index_file = DIST_DIR / "index.html"
+    if index_file.exists():
+        return FileResponse(str(index_file))
+    raise HTTPException(status_code=404, detail="Not Found")
 
 if __name__ == "__main__":
     import uvicorn
