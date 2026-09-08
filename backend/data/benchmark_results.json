@@ -1,10 +1,10 @@
 {
   "total_queries": 40,
-  "top1_accuracy": 0.875,
+  "top1_accuracy": 0.85,
   "recall_at_3": 0.9,
   "recall_at_5": 0.95,
-  "mrr": 0.8933,
-  "avg_latency_ms": 380.83,
+  "mrr": 0.8808,
+  "avg_latency_ms": 138.16,
   "categories": {
     "semantic": {
       "total": 10,
@@ -29,10 +29,10 @@
     },
     "zero_lexical_overlap": {
       "total": 10,
-      "top1_accuracy": 1.0,
+      "top1_accuracy": 0.9,
       "recall_at_3": 1.0,
       "recall_at_5": 1.0,
-      "mrr": 1.0
+      "mrr": 0.95
     }
   },
   "query_evaluations": [
@@ -42,33 +42,33 @@
       "query": "When was the vacation destination finalized?",
       "target_message_id": "msg_1444",
       "target_text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
-      "rank": 1,
-      "is_top1": true,
+      "rank": 2,
+      "is_top1": false,
       "is_top3": true,
       "is_top5": true,
-      "reciprocal_rank": 1.0,
-      "latency_ms": 2826.56,
+      "reciprocal_rank": 0.5,
+      "latency_ms": 356.54,
       "top_retrieved": [
         {
           "rank": 1,
-          "id": "msg_1444",
-          "sender": "Kabir",
-          "text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
-          "score": 0.9731
-        },
-        {
-          "rank": 2,
           "id": "msg_1445",
           "sender": "Kabir",
           "text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
-          "score": 0.9731
+          "score": 0.952
+        },
+        {
+          "rank": 2,
+          "id": "msg_1444",
+          "sender": "Kabir",
+          "text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
+          "score": 0.952
         },
         {
           "rank": 3,
           "id": "msg_1972",
           "sender": "Neha",
           "text": "Manager ne chhutti sign off kardi meri, 5 days off locked in HR portal!",
-          "score": 0.8014
+          "score": 0.7398
         }
       ]
     },
@@ -83,28 +83,28 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 340.23,
+      "latency_ms": 127.35,
       "top_retrieved": [
         {
           "rank": 1,
           "id": "msg_2238",
           "sender": "Priya",
           "text": "sab log 5k advance GPay kardo mere number pe",
-          "score": 0.7363
+          "score": 0.7691
         },
         {
           "rank": 2,
           "id": "msg_2249",
           "sender": "Priya",
           "text": "All 8 advance payments of 5000 received on GPay, villa token paid to host Mr. D'Souza",
-          "score": 0.6998
+          "score": 0.66
         },
         {
           "rank": 3,
           "id": "msg_0525",
           "sender": "Rohan",
           "text": "Priya sambhalegi saara hisaab kitaab, splitwise group create kar diya hai",
-          "score": 0.5321
+          "score": 0.5612
         }
       ]
     },
@@ -119,28 +119,28 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 400.81,
+      "latency_ms": 131.64,
       "top_retrieved": [
         {
           "rank": 1,
           "id": "msg_3418",
           "sender": "Aarav",
           "text": "Architecture lock: FastAPI backend + React Vite frontend with hybrid BM25 + ONNX vector search, no cloud lock-in",
-          "score": 1.0007
+          "score": 0.9501
         },
         {
           "rank": 2,
-          "id": "msg_3904",
-          "sender": "Sneha",
-          "text": "Final pitch deck and 2-minute video demo uploaded to submission portal",
-          "score": 0.5854
-        },
-        {
-          "rank": 3,
           "id": "msg_3393",
           "sender": "Aarav",
           "text": "Hackathon submission deadline is July 5th, prize pool is 10 Lakhs, team registration done!",
-          "score": 0.5786
+          "score": 0.5667
+        },
+        {
+          "rank": 3,
+          "id": "msg_3904",
+          "sender": "Sneha",
+          "text": "Final pitch deck and 2-minute video demo uploaded to submission portal",
+          "score": 0.5441
         }
       ]
     },
@@ -155,28 +155,28 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 281.56,
+      "latency_ms": 105.77,
       "top_retrieved": [
         {
           "rank": 1,
           "id": "msg_0525",
           "sender": "Rohan",
           "text": "Priya sambhalegi saara hisaab kitaab, splitwise group create kar diya hai",
-          "score": 0.8399
+          "score": 0.7267
         },
         {
           "rank": 2,
-          "id": "msg_0023",
-          "sender": "Kabir",
+          "id": "msg_1728",
+          "sender": "Sneha",
           "text": "splitwise pe hisaab clear karo pehle",
-          "score": 0.5402
+          "score": 0.471
         },
         {
           "rank": 3,
-          "id": "msg_3593",
+          "id": "msg_1648",
           "sender": "Rohan",
           "text": "splitwise pe hisaab clear karo pehle",
-          "score": 0.5402
+          "score": 0.471
         }
       ]
     },
@@ -191,28 +191,28 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 303.47,
+      "latency_ms": 108.29,
       "top_retrieved": [
         {
           "rank": 1,
           "id": "msg_2637",
           "sender": "Sneha",
           "text": "Kashmere Gate ISBT pe raat ko 9 baje milna hai sabko, bus 9:45 PM sharp niklegi",
-          "score": 0.8296
+          "score": 0.8037
         },
         {
           "rank": 2,
-          "id": "msg_1768",
-          "sender": "Aarav",
-          "text": "Volvo semi-sleeper 2x2 book kar li Zingbus se, comfortable rahega overnight",
-          "score": 0.4527
+          "id": "msg_0817",
+          "sender": "Vikram",
+          "text": "CS2 ya Valorant aao raat ko 11 baje",
+          "score": 0.5381
         },
         {
           "rank": 3,
-          "id": "msg_0215",
-          "sender": "Neha",
-          "text": "Republic Day brunch at Hauz Khas Social tomorrow at 1 PM, anyone free?",
-          "score": 0.4237
+          "id": "msg_3829",
+          "sender": "Kabir",
+          "text": "CS2 ya Valorant aao raat ko 11 baje",
+          "score": 0.5381
         }
       ]
     },
@@ -227,28 +227,28 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 314.04,
+      "latency_ms": 105.87,
       "top_retrieved": [
         {
           "rank": 1,
           "id": "msg_2642",
           "sender": "Vikram",
           "text": "Maine do extra 20000mAh battery pack bag me rakh liye hain tension mat lo",
-          "score": 0.8071
+          "score": 0.6956
         },
         {
           "rank": 2,
           "id": "msg_2581",
           "sender": "Neha",
           "text": "JBL Charge 5 main carry kar rahi hoon and curated a 12-hour roadtrip Spotify playlist",
-          "score": 0.5079
+          "score": 0.5104
         },
         {
           "rank": 3,
           "id": "msg_2661",
           "sender": "Ananya",
           "text": "Checked into Riverside Cottage Manali! The view of snow peaks from the lawn is unreal",
-          "score": 0.4075
+          "score": 0.4534
         }
       ]
     },
@@ -263,28 +263,28 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 323.91,
+      "latency_ms": 105.72,
       "top_retrieved": [
         {
           "rank": 1,
           "id": "msg_1972",
           "sender": "Neha",
           "text": "Manager ne chhutti sign off kardi meri, 5 days off locked in HR portal!",
-          "score": 0.8184
+          "score": 0.7217
         },
         {
           "rank": 2,
-          "id": "msg_1445",
-          "sender": "Kabir",
-          "text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
-          "score": 0.3758
+          "id": "msg_1974",
+          "sender": "Priya",
+          "text": "\ud83d\ude02",
+          "score": 0.4974
         },
         {
           "rank": 3,
-          "id": "msg_1444",
-          "sender": "Kabir",
-          "text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
-          "score": 0.3758
+          "id": "msg_0028",
+          "sender": "Aarav",
+          "text": "Good morning guysss",
+          "score": 0.465
         }
       ]
     },
@@ -299,28 +299,28 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 363.56,
+      "latency_ms": 129.43,
       "top_retrieved": [
         {
           "rank": 1,
           "id": "msg_2648",
           "sender": "Ananya",
           "text": "Murthal pe rukenge Sukhdev Dhaba pe garam paranthe aur makkhan khane",
-          "score": 0.7866
+          "score": 0.8051
         },
         {
           "rank": 2,
-          "id": "msg_2661",
-          "sender": "Ananya",
-          "text": "Checked into Riverside Cottage Manali! The view of snow peaks from the lawn is unreal",
-          "score": 0.4139
+          "id": "msg_2509",
+          "sender": "Vikram",
+          "text": "5 min me call karta hoon",
+          "score": 0.462
         },
         {
           "rank": 3,
-          "id": "msg_1693",
-          "sender": "Kabir",
-          "text": "Kabir: Hill driving night me risky hai, professional driver wali Volvo is 100x safer than self drive",
-          "score": 0.404
+          "id": "msg_2568",
+          "sender": "Aarav",
+          "text": "5 min me call karta hoon",
+          "score": 0.462
         }
       ]
     },
@@ -335,28 +335,28 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 531.41,
+      "latency_ms": 118.98,
       "top_retrieved": [
         {
           "rank": 1,
           "id": "msg_3428",
           "sender": "Vikram",
           "text": "pgvector hi use karenge relational + vector dono ke liye, separate cluster ka headache nahi chahiye",
-          "score": 0.8356
+          "score": 0.8353
         },
         {
           "rank": 2,
           "id": "msg_3481",
           "sender": "Vikram",
           "text": "Vikram: External embedding APIs have 60 req/min limit, local FastEmbed ONNX will give us unlimited zero-cost inferences",
-          "score": 0.5349
+          "score": 0.5749
         },
         {
           "rank": 3,
           "id": "msg_3782",
           "sender": "Aarav",
           "text": "BM25 plus embedding hybrid benchmark achieved 94% recall in under 35ms latency!",
-          "score": 0.5031
+          "score": 0.514
         }
       ]
     },
@@ -371,28 +371,28 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 301.12,
+      "latency_ms": 106.96,
       "top_retrieved": [
         {
           "rank": 1,
           "id": "msg_2605",
           "sender": "Rohan",
           "text": "Monopoly, Catan aur Codenames leke aa raha hoon plus projector for movies",
-          "score": 0.7097
+          "score": 0.7006
         },
         {
           "rank": 2,
           "id": "msg_1401",
           "sender": "Sneha",
           "text": "Rishikesh me May me bohot zyada garmi hogi rafting ke alawa time, Manali weather is perfect",
-          "score": 0.4534
+          "score": 0.5317
         },
         {
           "rank": 3,
-          "id": "msg_2564",
+          "id": "msg_3189",
           "sender": "Sneha",
-          "text": "Sneha: I am buying Diamox for altitude sickness, Paracetamol, Vomistop, and ORS sachets for everyone",
-          "score": 0.406
+          "text": "Good morning guysss",
+          "score": 0.4836
         }
       ]
     },
@@ -407,7 +407,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 0.3333333333333333,
-      "latency_ms": 263.28,
+      "latency_ms": 148.56,
       "top_retrieved": [
         {
           "rank": 1,
@@ -443,7 +443,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 243.6,
+      "latency_ms": 127.18,
       "top_retrieved": [
         {
           "rank": 1,
@@ -479,28 +479,28 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 316.36,
+      "latency_ms": 148.73,
       "top_retrieved": [
         {
           "rank": 1,
           "id": "msg_1768",
           "sender": "Aarav",
           "text": "Volvo semi-sleeper 2x2 book kar li Zingbus se, comfortable rahega overnight",
-          "score": 0.8843
+          "score": 0.8359
         },
         {
           "rank": 2,
           "id": "msg_1445",
           "sender": "Kabir",
           "text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
-          "score": 0.7581
+          "score": 0.7686
         },
         {
           "rank": 3,
           "id": "msg_1444",
           "sender": "Kabir",
           "text": "chalo Manali fix hai bhai, sab log dates block kar lo May 10-14",
-          "score": 0.7581
+          "score": 0.7686
         }
       ]
     },
@@ -515,7 +515,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 278.62,
+      "latency_ms": 121.98,
       "top_retrieved": [
         {
           "rank": 1,
@@ -551,7 +551,7 @@
       "is_top3": false,
       "is_top5": true,
       "reciprocal_rank": 0.2,
-      "latency_ms": 263.02,
+      "latency_ms": 127.77,
       "top_retrieved": [
         {
           "rank": 1,
@@ -587,7 +587,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 292.05,
+      "latency_ms": 144.0,
       "top_retrieved": [
         {
           "rank": 1,
@@ -623,7 +623,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 286.53,
+      "latency_ms": 124.24,
       "top_retrieved": [
         {
           "rank": 1,
@@ -659,7 +659,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 293.09,
+      "latency_ms": 111.27,
       "top_retrieved": [
         {
           "rank": 1,
@@ -695,7 +695,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 322.32,
+      "latency_ms": 168.74,
       "top_retrieved": [
         {
           "rank": 1,
@@ -731,7 +731,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 311.33,
+      "latency_ms": 133.3,
       "top_retrieved": [
         {
           "rank": 1,
@@ -767,7 +767,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 464.73,
+      "latency_ms": 111.19,
       "top_retrieved": [
         {
           "rank": 1,
@@ -803,7 +803,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 248.51,
+      "latency_ms": 103.44,
       "top_retrieved": [
         {
           "rank": 1,
@@ -839,7 +839,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 254.45,
+      "latency_ms": 154.68,
       "top_retrieved": [
         {
           "rank": 1,
@@ -875,7 +875,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 236.0,
+      "latency_ms": 138.53,
       "top_retrieved": [
         {
           "rank": 1,
@@ -911,7 +911,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 246.23,
+      "latency_ms": 110.21,
       "top_retrieved": [
         {
           "rank": 1,
@@ -947,7 +947,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 320.75,
+      "latency_ms": 109.28,
       "top_retrieved": [
         {
           "rank": 1,
@@ -983,7 +983,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 308.15,
+      "latency_ms": 148.85,
       "top_retrieved": [
         {
           "rank": 1,
@@ -1019,7 +1019,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 295.0,
+      "latency_ms": 177.56,
       "top_retrieved": [
         {
           "rank": 1,
@@ -1055,7 +1055,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 366.09,
+      "latency_ms": 99.51,
       "top_retrieved": [
         {
           "rank": 1,
@@ -1091,7 +1091,7 @@
       "is_top3": false,
       "is_top5": true,
       "reciprocal_rank": 0.2,
-      "latency_ms": 361.94,
+      "latency_ms": 124.95,
       "top_retrieved": [
         {
           "rank": 1,
@@ -1127,7 +1127,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 331.58,
+      "latency_ms": 143.02,
       "top_retrieved": [
         {
           "rank": 1,
@@ -1163,7 +1163,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 547.92,
+      "latency_ms": 142.7,
       "top_retrieved": [
         {
           "rank": 1,
@@ -1199,7 +1199,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 252.83,
+      "latency_ms": 124.61,
       "top_retrieved": [
         {
           "rank": 1,
@@ -1235,7 +1235,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 269.53,
+      "latency_ms": 129.57,
       "top_retrieved": [
         {
           "rank": 1,
@@ -1271,7 +1271,7 @@
       "is_top3": false,
       "is_top5": false,
       "reciprocal_rank": 0.0,
-      "latency_ms": 267.03,
+      "latency_ms": 123.42,
       "top_retrieved": [
         {
           "rank": 1,
@@ -1307,7 +1307,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 341.24,
+      "latency_ms": 173.51,
       "top_retrieved": [
         {
           "rank": 1,
@@ -1343,28 +1343,28 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 361.98,
+      "latency_ms": 119.16,
       "top_retrieved": [
         {
           "rank": 1,
           "id": "msg_2893",
           "sender": "Rohan",
           "text": "Manali photo dump Google Drive folder link shared with 450 raw photos, download before Friday",
-          "score": 1.0991
+          "score": 1.1371
         },
         {
           "rank": 2,
           "id": "msg_3124",
           "sender": "Vikram",
           "text": "Forwarded: Himachal road status: Manali-Leh highway officially open for tourists",
-          "score": 1.0294
+          "score": 1.0105
         },
         {
           "rank": 3,
-          "id": "msg_2984",
-          "sender": "Aarav",
+          "id": "msg_3063",
+          "sender": "Vikram",
           "text": "Forwarded: Himachal road status: Manali-Leh highway officially open for tourists",
-          "score": 1.0294
+          "score": 1.0105
         }
       ]
     },
@@ -1379,7 +1379,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 304.65,
+      "latency_ms": 221.85,
       "top_retrieved": [
         {
           "rank": 1,
@@ -1415,7 +1415,7 @@
       "is_top3": true,
       "is_top5": true,
       "reciprocal_rank": 1.0,
-      "latency_ms": 298.75,
+      "latency_ms": 200.58,
       "top_retrieved": [
         {
           "rank": 1,
@@ -1451,7 +1451,7 @@
       "is_top3": false,
       "is_top5": false,
       "reciprocal_rank": 0.0,
-      "latency_ms": 298.78,
+      "latency_ms": 117.56,
       "top_retrieved": [
         {
           "rank": 1,

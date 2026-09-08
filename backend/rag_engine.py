@@ -27,7 +27,8 @@ from typing import List, Dict, Any, Optional, Tuple
 DATA_DIR = Path(__file__).resolve().parent / "data"
 CHAT_FILE = DATA_DIR / "synthetic_chat.json"
 CACHE_FILE = DATA_DIR / "cached_embeddings.npz"
-
+QUERY_CACHE_FILE = DATA_DIR / "query_cache.npz"
+VOCAB_CACHE_FILE = DATA_DIR / "vocab_embeddings.npz"
 # Comprehensive Hinglish Colloquial & Semantic Mapping
 HINGLISH_DICTIONARY = {
     # Decisions & agreements
@@ -252,13 +253,19 @@ class RAGEngine:
 
         with open(CHAT_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
-            self.messages = data["messages"]
-
-        self.id_to_index = {m["id"]: idx for idx, m in enumerate(self.messages)}
-        print(f"Loaded {len(self.messages)} messages into RAG engine.")
+        self.messages = data["messages"]
+        self.query_cache = self._load_npz_dict(QUERY_CACHE_FILE)
+        self.vocab_cache = self._load_npz_dict(VOCAB_CACHE_FILE)
+    def _load_npz_dict(self, path: Path) -> Dict[str, np.ndarray]:
+        if path.exists():
+            try:
+                data = np.load(path)
+                return {k: data[k] for k in data.files}
+            except Exception:
+                return {}
+        return {}
 
     def _init_search_indices(self):
-        print("Initializing BM25 index with Hinglish semantic expansions...")
         expanded_docs = []
         for m in self.messages:
             # Enrich text with sender, date, thread, and Hinglish normalizer
@@ -294,10 +301,43 @@ class RAGEngine:
 
     def _get_embedding_model(self):
         if self.embedding_model is None:
-            from fastembed import TextEmbedding
-            cache_dir = os.environ.get("FASTEMBED_CACHE_PATH", "/tmp/fastembed_cache")
-            self.embedding_model = TextEmbedding("BAAI/bge-small-en-v1.5", cache_dir=cache_dir)
+            try:
+                from fastembed import TextEmbedding
+                cache_dir = os.environ.get("FASTEMBED_CACHE_PATH", "/tmp/fastembed_cache")
+                self.embedding_model = TextEmbedding("BAAI/bge-small-en-v1.5", cache_dir=cache_dir)
+            except Exception:
+                self.embedding_model = None
         return self.embedding_model
+
+    def embed_query(self, query: str) -> np.ndarray:
+        q_clean = query.strip()
+        if q_clean in self.query_cache:
+            return self.query_cache[q_clean]
+        q_lower = q_clean.lower()
+        if q_lower in self.query_cache:
+            return self.query_cache[q_lower]
+
+        # Try fastembed if installed (e.g. local development)
+        try:
+            model = self._get_embedding_model()
+            if model:
+                vec = list(model.embed([q_clean]))[0]
+                return np.array(vec, dtype=np.float32)
+        except Exception:
+            pass
+
+        # Serverless fallback: Word-vector pooling from vocab cache
+        words = [w for w in re.findall(r"\w+", q_lower) if w in self.vocab_cache and w not in ENGLISH_STOPWORDS]
+        if not words:
+            words = [w for w in re.findall(r"\w+", q_lower) if w in self.vocab_cache]
+        if words:
+            vecs = [self.vocab_cache[w] for w in words]
+            avg_vec = np.mean(vecs, axis=0)
+            norm = np.linalg.norm(avg_vec)
+            if norm > 1e-9:
+                return (avg_vec / norm).astype(np.float32)
+
+        return np.zeros(384, dtype=np.float32)
     def parse_query_intent(self, query: str) -> Dict[str, Any]:
         """
         Parses query into structured intent:
@@ -408,11 +448,13 @@ class RAGEngine:
         bm25_norm = bm25_scores / max_bm25
 
         # 2. Compute Dense Embeddings similarity
-        embed_model = self._get_embedding_model()
-        q_vec = list(embed_model.embed([expanded_query]))[0]
-        q_vec = q_vec / (np.linalg.norm(q_vec) + 1e-9)
-        dense_scores = np.dot(self.embeddings, q_vec)
-
+        q_vec = self.embed_query(expanded_query)
+        q_norm = np.linalg.norm(q_vec)
+        if q_norm > 1e-9:
+            q_vec = q_vec / q_norm
+            dense_scores = np.dot(self.embeddings, q_vec)
+        else:
+            dense_scores = np.zeros(len(self.messages), dtype=np.float32)
         # 3. Dynamic Multi-Factor Scoring
         w_dense = 0.65
         w_bm25 = 0.35
