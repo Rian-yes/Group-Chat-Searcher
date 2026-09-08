@@ -10,11 +10,17 @@ Implements:
 7. Grounded RAG Answer Synthesizer with citations.
 """
 
+import os
 import re
 import json
 import math
 import numpy as np
 from datetime import datetime, timedelta
+from pathlib import Path
+from typing import List, Dict, Any, Optional, Tuple
+
+os.environ.setdefault("FASTEMBED_CACHE_PATH", "/tmp/fastembed_cache")
+os.environ.setdefault("HF_HOME", "/tmp/hf_cache")
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
 
@@ -289,9 +295,9 @@ class RAGEngine:
     def _get_embedding_model(self):
         if self.embedding_model is None:
             from fastembed import TextEmbedding
-            self.embedding_model = TextEmbedding("BAAI/bge-small-en-v1.5")
+            cache_dir = os.environ.get("FASTEMBED_CACHE_PATH", "/tmp/fastembed_cache")
+            self.embedding_model = TextEmbedding("BAAI/bge-small-en-v1.5", cache_dir=cache_dir)
         return self.embedding_model
-
     def parse_query_intent(self, query: str) -> Dict[str, Any]:
         """
         Parses query into structured intent:

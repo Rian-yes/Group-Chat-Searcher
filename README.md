@@ -138,6 +138,17 @@ npm run dev -- --host 127.0.0.1 --port 5173
 ```
 Open your browser at `http://127.0.0.1:5173`.
 
+### 4. Deploying to Vercel (Single Unified Project)
+This repository is pre-configured for **single-project deployment on Vercel** (both React UI and Python API under one URL):
+1. Push this repository to your GitHub account.
+2. Go to [Vercel Dashboard](https://vercel.com/new) and click **"Import Project"**.
+3. Select this repository. Keep the root directory as `./` (default).
+4. Click **"Deploy"** — Vercel will automatically:
+   - Build the React frontend into `frontend/dist`.
+   - Deploy the Python FastAPI backend via Serverless Functions at `/api/*`.
+   - Provide a single live production URL (e.g. `https://your-project.vercel.app`) with zero CORS configuration required.
+
+---
 ---
 
 ## 🧪 Running Automated Evaluation

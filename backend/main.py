@@ -13,6 +13,11 @@ import re
 from datetime import datetime
 from pathlib import Path
 from typing import Optional, List, Dict, Any
+import sys
+
+backend_dir = Path(__file__).resolve().parent
+if str(backend_dir) not in sys.path:
+    sys.path.insert(0, str(backend_dir))
 
 from fastapi import FastAPI, HTTPException, Query, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
@@ -20,7 +25,6 @@ from pydantic import BaseModel, Field
 
 from rag_engine import get_rag_engine, normalize_hinglish, BM25Index
 from evaluation import evaluate_rag_engine
-
 app = FastAPI(
     title="Group Chat RAG Search Engine",
     description="Intelligent semantic, attributed, and temporal search over messy Hinglish group chats.",
