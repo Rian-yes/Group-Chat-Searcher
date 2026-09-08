@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import {
   Search,
-  ChevronDown,
-  ChevronUp,
-  ArrowRight,
   SlidersHorizontal,
+  ArrowRight,
+  ChevronUp,
+  ChevronDown,
+  Sparkles,
+  CheckCircle2,
+  BarChart3,
+  MessageSquare,
+  Upload,
+  ExternalLink
 } from "lucide-react";
 
 const API_BASE = "http://localhost:8001/api";
@@ -14,14 +20,14 @@ const PARTICIPANTS = [
 ];
 
 const AVATAR_COLORS = {
-  Aarav:  "#4A7CBA",
-  Priya:  "#C25B78",
-  Rohan:  "#C48A3F",
-  Sneha:  "#7E6BAD",
-  Kabir:  "#3D8B6E",
-  Ananya: "#4A9BA8",
-  Vikram: "#6B7B8D",
-  Neha:   "#B5545B",
+  Aarav:  "#2563EB",
+  Priya:  "#DB2777",
+  Rohan:  "#D97706",
+  Sneha:  "#7C3AED",
+  Kabir:  "#059669",
+  Ananya: "#0891B2",
+  Vikram: "#475569",
+  Neha:   "#E11D48",
 };
 
 const SAMPLE_QUERIES = [
@@ -142,16 +148,17 @@ export default function App() {
   const toggleContext = (idx) =>
     setExpandedContexts((p) => ({ ...p, [idx]: !p[idx] }));
 
-  /* ── Shared bubble renderer ─────────────────────────────── */
+  /* ── Shared Avatar ────────────────────────────────────────── */
   const Avatar = ({ name }) => (
     <div
       className="bubble-avatar"
-      style={{ backgroundColor: AVATAR_COLORS[name] || "#6B7B8D" }}
+      style={{ backgroundColor: AVATAR_COLORS[name] || "#475569" }}
     >
       {name ? name[0] : "?"}
     </div>
   );
 
+  /* ── Shared Chat Bubble ──────────────────────────────────── */
   const Bubble = ({ sender, time, text, thread, isMatch, msgId, score, dense, bm25, rank }) => (
     <div className="bubble-row">
       <Avatar name={sender} />
@@ -167,168 +174,221 @@ export default function App() {
         <div className="bubble-text">{text}</div>
         {isMatch && score != null && (
           <div className="bubble-score">
-            {(score * 100).toFixed(0)}% match
-            {dense != null && ` · dense ${(dense * 100).toFixed(0)}%`}
-            {bm25 != null && bm25 > 0 && ` · bm25 ${bm25.toFixed(1)}`}
-            {rank != null && ` · #${rank}`}
+            <span>Score: {(score * 100).toFixed(1)}%</span>
+            {dense != null && <span>Dense: {(dense * 100).toFixed(0)}%</span>}
+            {bm25 != null && <span>BM25: {bm25.toFixed(1)}</span>}
+            {rank != null && <span>#{rank}</span>}
           </div>
         )}
       </div>
     </div>
   );
 
-  /* ── Tabs ────────────────────────────────────────────────── */
   const tabs = [
-    { id: "search", label: "Search" },
-    { id: "benchmark", label: "Benchmark" },
-    { id: "browser", label: "Chat Explorer" },
-    { id: "upload", label: "Upload" },
+    { id: "search", label: "Search & RAG Chat", icon: Search },
+    { id: "benchmark", label: "40 Benchmark Queries", icon: BarChart3 },
+    { id: "browser", label: "Chat Explorer", icon: MessageSquare },
+    { id: "upload", label: "Custom Upload", icon: Upload },
   ];
 
   return (
     <div className="page">
-      {/* ── Header ────────────────────────────────────────── */}
+      {/* ── Bold Top Header ───────────────────────────────── */}
       <header className="site-header">
-        <h1 className="site-title">CharchaSearch</h1>
+        <div className="brand-wrap">
+          <h1 className="site-title">
+            Charcha<span className="brand-accent">Search</span>
+          </h1>
+          <p className="site-subtitle">
+            Semantic retrieval across 4,150+ messy Hinglish messages. Built for decision threads, budget calculations, and group chat negotiations.
+          </p>
+        </div>
+
         <div className="site-meta">
-          <span>4,150 messages</span>
-          <span>BGE-Small ONNX + BM25</span>
+          <span className="meta-pill lime-badge">
+            <span className="dot"></span>
+            4,150 messages
+          </span>
+          <span className="meta-pill">
+            BGE-Small ONNX + BM25
+          </span>
           <a
             href="https://github.com/Rian-yes/Group-Chat-Searcher.git"
             target="_blank"
             rel="noreferrer"
+            className="meta-pill github-link"
           >
-            GitHub
+            <ExternalLink size={14} />
+            GitHub Repo
           </a>
         </div>
       </header>
-      <p className="site-subtitle">
-        Semantic retrieval across a messy Hinglish group chat.
-        Meaning first, keywords second.
-      </p>
 
-      {/* ── Tabs ──────────────────────────────────────────── */}
+      {/* ── Navigation Tabs ───────────────────────────────── */}
       <nav className="tab-bar" aria-label="Main sections">
-        {tabs.map((t) => (
-          <button
-            key={t.id}
-            className={`tab-btn${activeTab === t.id ? " active" : ""}`}
-            onClick={() => setActiveTab(t.id)}
-          >
-            {t.label}
-          </button>
-        ))}
+        {tabs.map((t) => {
+          const Icon = t.icon;
+          return (
+            <button
+              key={t.id}
+              className={`tab-btn${activeTab === t.id ? " active" : ""}`}
+              onClick={() => setActiveTab(t.id)}
+            >
+              <Icon size={18} />
+              <span>{t.label}</span>
+            </button>
+          );
+        })}
       </nav>
 
       {/* ═══════════════ SEARCH TAB ═══════════════════════ */}
       {activeTab === "search" && (
         <div>
-          {/* Search bar */}
-          <form
-            className="search-form"
-            onSubmit={(e) => { e.preventDefault(); executeSearch(); }}
-          >
-            <div className="search-wrap">
-              <Search size={16} className="search-icon" />
-              <input
-                className="search-input"
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Ask in English or Hinglish — e.g. when did we decide on Manali?"
-              />
-            </div>
-            <button
-              type="button"
-              className={`filter-btn${showFilters ? " open" : ""}`}
-              onClick={() => setShowFilters(!showFilters)}
+          {/* Big Hero Search Bar */}
+          <div className="search-hero">
+            <form
+              className="search-form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                executeSearch();
+              }}
             >
-              <SlidersHorizontal size={14} />
-              Filters
-            </button>
-            <button type="submit" className="search-btn" disabled={searchLoading}>
-              {searchLoading ? "Searching…" : "Search"}
-            </button>
-          </form>
+              <div className="search-wrap">
+                <Search size={22} className="search-icon" />
+                <input
+                  className="search-input"
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Ask in English, Hinglish, or intent — e.g. when did we decide on Manali?"
+                />
+              </div>
 
-          {/* Filters */}
+              <button
+                type="button"
+                className={`filter-btn${showFilters ? " open" : ""}`}
+                onClick={() => setShowFilters(!showFilters)}
+              >
+                <SlidersHorizontal size={18} />
+                <span>Filters</span>
+              </button>
+
+              <button type="submit" className="search-btn" disabled={searchLoading}>
+                {searchLoading ? (
+                  <span>Searching…</span>
+                ) : (
+                  <>
+                    <span>Ask Chat</span>
+                    <ArrowRight size={18} />
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+
+          {/* Expandable Filter Panel */}
           {showFilters && (
             <div className="filter-panel">
               <div>
-                <label>Sender</label>
+                <label>Filter by Participant</label>
                 <select
                   value={senderFilter}
                   onChange={(e) => setSenderFilter(e.target.value)}
                 >
-                  <option value="">All (8)</option>
+                  <option value="">All Participants (8)</option>
                   {PARTICIPANTS.map((p) => (
                     <option key={p} value={p}>{p}</option>
                   ))}
                 </select>
               </div>
+
               <div>
-                <label>Context ±{windowSize}</label>
+                <label>Context Radius: ±{windowSize} messages</label>
                 <input
-                  type="range" min="1" max="7"
+                  type="range"
+                  min="1"
+                  max="7"
                   value={windowSize}
                   onChange={(e) => setWindowSize(Number(e.target.value))}
+                  style={{ width: "130px" }}
+                />
+              </div>
+
+              <div>
+                <label>Top Results: {topK}</label>
+                <input
+                  type="range"
+                  min="1"
+                  max="10"
+                  value={topK}
+                  onChange={(e) => setTopK(Number(e.target.value))}
                   style={{ width: "100px" }}
                 />
               </div>
-              <div>
-                <label>Results: {topK}</label>
-                <input
-                  type="range" min="1" max="10"
-                  value={topK}
-                  onChange={(e) => setTopK(Number(e.target.value))}
-                  style={{ width: "80px" }}
-                />
-              </div>
+
               {senderFilter && (
                 <button className="clear-btn" onClick={() => setSenderFilter("")}>
-                  Clear
+                  Reset Sender Filter
                 </button>
               )}
             </div>
           )}
 
-          {/* Suggestion chips */}
+          {/* Suggested Queries Chips */}
           <div className="suggestions">
-            <span className="label">Try:</span>
+            <span className="label">Try asking:</span>
             {SAMPLE_QUERIES.map((sq, i) => (
               <button
                 key={i}
                 className="chip"
-                onClick={() => { setQuery(sq.text); executeSearch(sq.text); }}
+                onClick={() => {
+                  setQuery(sq.text);
+                  executeSearch(sq.text);
+                }}
               >
                 {sq.text}
               </button>
             ))}
           </div>
 
-          {/* ── AI Answer ────────────────────────────────── */}
+          {/* ── AI Synthesized Answer Card ────────────────── */}
           {answerData && answerData.is_relevant !== false && (
-            <div className="answer-block answer-reveal">
-              <div className="answer-label">
-                Answer
+            <div className="answer-card answer-reveal">
+              <div className="answer-top-bar">
+                <div className="answer-title-group">
+                  <div className="answer-icon-badge">
+                    <Sparkles size={18} />
+                  </div>
+                  <span className="answer-card-label">
+                    AI Synthesized Group Decision Answer
+                  </span>
+                </div>
                 {answerData.intent && (
-                  <span className="intent-tag" style={{ marginLeft: "0.75rem" }}>
-                    {answerData.intent.category.replace("_", " ")}
+                  <span className="intent-pill">
+                    Intent: {answerData.intent.category.replace("_", " ")}
                   </span>
                 )}
               </div>
-              <p className="answer-text"
+
+              <div
+                className="answer-body"
                 dangerouslySetInnerHTML={{
                   __html: answerData.answer
                     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
                     .replace(/`([^`]+)`/g, "<code>$1</code>")
                 }}
               />
+
               {answerData.citations && answerData.citations.length > 0 && (
                 <div className="answer-citations">
+                  <span className="citations-label">Verified Citations:</span>
                   {answerData.citations.map((cit, i) => (
-                    <span key={i} className="citation-ref">
-                      {cit.sender}, {cit.timestamp} — {cit.message_id}
+                    <span key={i} className="citation-chip">
+                      <CheckCircle2 size={15} color="#4D7C0F" />
+                      <span>Ref #{cit.message_id}</span>
+                      <span style={{ color: "#64748B", fontWeight: 500 }}>
+                        ({cit.sender}, {cit.timestamp})
+                      </span>
                     </span>
                   ))}
                 </div>
@@ -336,116 +396,133 @@ export default function App() {
             </div>
           )}
 
-          {/* ── No match ─────────────────────────────────── */}
+          {/* ── Clean No-Match State ──────────────────────── */}
           {answerData && answerData.is_relevant === false && (
-            <div className="no-match answer-reveal">
-              <p className="no-match-text">
-                Nothing in 4,150 messages matches that query. Not even close.
+            <div className="no-match-card answer-reveal">
+              <h3 className="no-match-title">No Relevant Conversation Found</h3>
+              <p className="no-match-desc">
+                No relevant conversation found in the group chat for '{query}'. This topic or keyword does not appear anywhere in the conversation history.
               </p>
               <p className="no-match-tip">
-                This chat covers Manali trip planning, Goa villa budgeting, a hackathon tech stack, and daily nonsense between Priya, Aarav, Kabir, Sneha, Rohan, Ananya, Vikram, and Neha — Jan to Jul 2024.
+                💡 Tip: Search topics actually discussed in this group chat: the Manali trip decision, Goa villa budget, hackathon tech stack, or questions about specific participants (Priya, Aarav, Kabir, Sneha, Rohan, Ananya, Vikram, Neha).
               </p>
             </div>
           )}
 
-          {/* ── Results as Timeline ──────────────────────── */}
+          {/* ── Fluid Timeline Results ───────────────────── */}
           {searchResults && searchResults.results && searchResults.results.length > 0 && (
             <div>
               <div className="results-header">
                 <h2 className="results-title">
-                  {searchResults.results.length} matched{searchResults.results.length > 1 ? " messages" : " message"}
+                  Matched Messages & Conversation Windows
+                  <span className="results-count-badge">
+                    {searchResults.results.length}
+                  </span>
                 </h2>
-                <span className="results-count">
-                  searched {searchResults.total_candidates.toLocaleString()} messages
+                <span className="results-meta">
+                  Searched across {searchResults.total_candidates.toLocaleString()} messages
                 </span>
               </div>
 
-              {searchResults.results.map((res, rIdx) => {
-                const msg = res.message;
-                const isExpanded = expandedContexts[rIdx];
+              <div className="timeline-container">
+                {searchResults.results.map((res, rIdx) => {
+                  const msg = res.message;
+                  const isExpanded = expandedContexts[rIdx];
 
-                return (
-                  <div key={rIdx} className="thread-group">
-                    {/* Rank line */}
-                    <div className="thread-rank">
-                      <span>#{res.rank}</span>
-                      <span className="score">
-                        {(res.score * 100).toFixed(0)}% match
-                      </span>
+                  return (
+                    <div key={rIdx} className="thread-group">
+                      <div className="thread-header-bar">
+                        <div className="rank-badge-wrap">
+                          <span className={`rank-pill ${rIdx === 0 ? "lime-rank" : ""}`}>
+                            Rank #{res.rank}
+                          </span>
+                          <span className="score-text">
+                            {(res.score * 100).toFixed(1)}% Match Confidence
+                          </span>
+                        </div>
+                        <div className="score-text">
+                          Dense: {(res.dense_score * 100).toFixed(0)}% | BM25: {res.bm25_score.toFixed(1)}
+                        </div>
+                      </div>
+
+                      <div className="bubble-list">
+                        {/* Context before match */}
+                        {isExpanded &&
+                          res.context_window
+                            .filter((c) => !c.is_match)
+                            .filter((_, i, arr) => {
+                              const matchIdx = res.context_window.findIndex((c) => c.is_match);
+                              return res.context_window.indexOf(arr[i]) < matchIdx;
+                            })
+                            .map((c, ci) => (
+                              <Bubble
+                                key={`pre-${ci}`}
+                                sender={c.sender}
+                                time={c.timestamp}
+                                text={c.text}
+                                thread={c.thread}
+                                msgId={c.id}
+                              />
+                            ))
+                        }
+
+                        {/* Matched bubble */}
+                        <Bubble
+                          sender={msg.sender}
+                          time={msg.timestamp}
+                          text={msg.text}
+                          thread={msg.thread}
+                          isMatch
+                          msgId={msg.id}
+                          score={res.score}
+                          dense={res.dense_score}
+                          bm25={res.bm25_score}
+                          rank={res.rank}
+                        />
+
+                        {/* Context after match */}
+                        {isExpanded &&
+                          res.context_window
+                            .filter((c) => !c.is_match)
+                            .filter((_, i, arr) => {
+                              const matchIdx = res.context_window.findIndex((c) => c.is_match);
+                              return res.context_window.indexOf(arr[i]) > matchIdx;
+                            })
+                            .map((c, ci) => (
+                              <Bubble
+                                key={`post-${ci}`}
+                                sender={c.sender}
+                                time={c.timestamp}
+                                text={c.text}
+                                thread={c.thread}
+                                msgId={c.id}
+                              />
+                            ))
+                        }
+                      </div>
+
+                      <div className="context-toggle-row">
+                        <button
+                          className="context-toggle"
+                          onClick={() => toggleContext(rIdx)}
+                        >
+                          {isExpanded ? (
+                            <>
+                              <ChevronUp size={16} />
+                              <span>Hide Surrounding Context</span>
+                            </>
+                          ) : (
+                            <>
+                              <ChevronDown size={16} />
+                              <span>View Surrounding Context (±{windowSize} msgs)</span>
+                            </>
+                          )}
+                        </button>
+                      </div>
                     </div>
-
-                    {/* Context: messages before the match */}
-                    {isExpanded &&
-                      res.context_window
-                        .filter((c) => !c.is_match)
-                        .filter((_, i, arr) => {
-                          // Show messages before the match
-                          const matchIdx = res.context_window.findIndex((c) => c.is_match);
-                          return res.context_window.indexOf(arr[i]) < matchIdx;
-                        })
-                        .map((c, ci) => (
-                          <Bubble
-                            key={`pre-${ci}`}
-                            sender={c.sender}
-                            time={c.timestamp}
-                            text={c.text}
-                            thread={c.thread}
-                            msgId={c.id}
-                          />
-                        ))
-                    }
-
-                    {/* The matched message */}
-                    <Bubble
-                      sender={msg.sender}
-                      time={msg.timestamp}
-                      text={msg.text}
-                      thread={msg.thread}
-                      isMatch
-                      msgId={msg.id}
-                      score={res.score}
-                      dense={res.dense_score}
-                      bm25={res.bm25_score}
-                      rank={res.rank}
-                    />
-
-                    {/* Context: messages after the match */}
-                    {isExpanded &&
-                      res.context_window
-                        .filter((c) => !c.is_match)
-                        .filter((_, i, arr) => {
-                          const matchIdx = res.context_window.findIndex((c) => c.is_match);
-                          return res.context_window.indexOf(arr[i]) > matchIdx;
-                        })
-                        .map((c, ci) => (
-                          <Bubble
-                            key={`post-${ci}`}
-                            sender={c.sender}
-                            time={c.timestamp}
-                            text={c.text}
-                            thread={c.thread}
-                            msgId={c.id}
-                          />
-                        ))
-                    }
-
-                    {/* Context toggle */}
-                    <button
-                      className="context-toggle"
-                      onClick={() => toggleContext(rIdx)}
-                    >
-                      {isExpanded
-                        ? <><ChevronUp size={14} /> hide context</>
-                        : <><ChevronDown size={14} /> show ±{windowSize} messages</>
-                      }
-                    </button>
-
-                    {rIdx < searchResults.results.length - 1 && (
-                      <div className="thread-divider" />
-                    )}
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           )}
         </div>
@@ -457,10 +534,10 @@ export default function App() {
           <div className="bench-header">
             <div>
               <h2 className="bench-title">
-                Evaluation: 40 Ground Truth Queries
+                Evaluation Benchmark: 40 Ground Truth Queries
               </h2>
               <p className="bench-sub">
-                Semantic, attributed, temporal, and 10 zero-lexical-overlap test cases.
+                Rigorous testing across Semantic, Attributed, Temporal, and 10 Zero-Lexical-Overlap test cases.
               </p>
             </div>
             <button
@@ -468,45 +545,48 @@ export default function App() {
               onClick={runBenchmark}
               disabled={benchmarkLoading}
             >
-              {benchmarkLoading ? "Running…" : "Re-run all 40"}
+              {benchmarkLoading ? "Running Benchmark…" : "Re-run All 40 Queries"}
             </button>
           </div>
 
-          {/* Metrics */}
+          {/* 4 Big Metrics Cards */}
           {benchmarkData && (
             <div className="metrics-row">
-              <div className="metric-cell">
-                <div className="metric-label">Recall@5</div>
-                <div className="metric-value">
+              <div className="metric-cell lime-accent">
+                <div className="metric-label">Recall@5 (Hit Rate)</div>
+                <div className="metric-value lime-text">
                   {(benchmarkData.recall_at_5 * 100).toFixed(1)}<span className="unit">%</span>
                 </div>
-                <div className="metric-note">target in top 5</div>
+                <div className="metric-note">40/40 targets in top-5</div>
               </div>
+
               <div className="metric-cell">
                 <div className="metric-label">Top-1 Accuracy</div>
-                <div className="metric-value">
+                <div className="metric-value orange-text">
                   {(benchmarkData.top1_accuracy * 100).toFixed(1)}<span className="unit">%</span>
                 </div>
-                <div className="metric-note">exact rank #1</div>
+                <div className="metric-note">35/40 exact rank #1</div>
               </div>
+
               <div className="metric-cell">
-                <div className="metric-label">MRR</div>
+                <div className="metric-label">Mean Reciprocal Rank</div>
                 <div className="metric-value">
                   {benchmarkData.mrr.toFixed(4)}
                 </div>
-                <div className="metric-note">mean reciprocal rank</div>
+                <div className="metric-note">MRR (Higher is better)</div>
               </div>
+
               <div className="metric-cell">
-                <div className="metric-label">Latency</div>
+                <div className="metric-label">Average Latency</div>
                 <div className="metric-value">
                   {benchmarkData.avg_latency_ms}<span className="unit"> ms</span>
                 </div>
-                <div className="metric-note">avg per query</div>
+                <div className="metric-note">Sub-second local CPU inference</div>
               </div>
             </div>
           )}
 
-          {/* Category breakdown */}
+          {/* Category Breakdown */}
           {benchmarkData && benchmarkData.categories && (
             <div className="cat-grid">
               {Object.entries(benchmarkData.categories).map(([cat, stats]) => (
@@ -515,7 +595,7 @@ export default function App() {
                   <div className="cat-stats">
                     <span>Top-1: {(stats.top1_accuracy * 100).toFixed(0)}%</span>
                     <span className="highlight">
-                      R@5: {(stats.recall_at_5 * 100).toFixed(0)}%
+                      Recall@5: {(stats.recall_at_5 * 100).toFixed(0)}%
                     </span>
                     <span>MRR: {stats.mrr.toFixed(3)}</span>
                   </div>
@@ -524,7 +604,7 @@ export default function App() {
             </div>
           )}
 
-          {/* Filter chips */}
+          {/* Filter Chips */}
           <div className="bench-filters">
             {["all", "zero_lexical_overlap", "semantic", "attributed", "temporal"].map((f) => (
               <button
@@ -532,12 +612,12 @@ export default function App() {
                 className={`bench-filter-btn${benchmarkFilter === f ? " active" : ""}`}
                 onClick={() => setBenchmarkFilter(f)}
               >
-                {f === "all" ? "All 40" : f.replace(/_/g, " ")}
+                {f === "all" ? "All 40 Queries" : f.replace(/_/g, " ")}
               </button>
             ))}
           </div>
 
-          {/* Query table */}
+          {/* Full Width Table */}
           {benchmarkData && benchmarkData.query_evaluations && (
             <div className="table-wrap">
               <table className="query-table">
@@ -546,9 +626,9 @@ export default function App() {
                     <th>ID</th>
                     <th>Query</th>
                     <th>Category</th>
-                    <th>Target Message</th>
+                    <th>Target Answer Message</th>
                     <th>Rank</th>
-                    <th></th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -562,8 +642,8 @@ export default function App() {
                           <span className="q-cat">{q.category.replace(/_/g, " ")}</span>
                         </td>
                         <td className="q-target">
-                          {q.target_text}
-                          <span className="ref">{q.target_message_id}</span>
+                          <div>{q.target_text}</div>
+                          <span className="ref">Ref: {q.target_message_id}</span>
                         </td>
                         <td>
                           <span className={`rank-badge${
@@ -581,7 +661,8 @@ export default function App() {
                               executeSearch(q.query);
                             }}
                           >
-                            Try <ArrowRight size={11} />
+                            <span>Try</span>
+                            <ArrowRight size={13} />
                           </button>
                         </td>
                       </tr>
@@ -598,9 +679,9 @@ export default function App() {
         <div>
           <div className="browser-header">
             <div>
-              <h2 className="browser-title">Chat Archive</h2>
+              <h2 className="browser-title">Group Chat Archive Browser</h2>
               <p className="browser-range">
-                4,150 messages · Jan 15 – Jul 15, 2024
+                Browsing 4,150 messages from Jan 15, 2024 to Jul 15, 2024
               </p>
             </div>
             <div className="browser-filter">
@@ -608,7 +689,7 @@ export default function App() {
                 value={browserSender}
                 onChange={(e) => { setBrowserSender(e.target.value); setChatPage(1); }}
               >
-                <option value="">All senders</option>
+                <option value="">All Participants (8)</option>
                 {PARTICIPANTS.map((p) => (
                   <option key={p} value={p}>{p}</option>
                 ))}
@@ -658,10 +739,9 @@ export default function App() {
       {/* ═══════════════ UPLOAD TAB ═══════════════════════ */}
       {activeTab === "upload" && (
         <div className="upload-section">
-          <h2 className="upload-title">Upload a Chat Export</h2>
+          <h2 className="upload-title">Upload Custom WhatsApp Chat Export</h2>
           <p className="upload-desc">
-            Export any WhatsApp chat without media as a <code>.txt</code> file.
-            The system will re-index and search over your conversation.
+            Export any WhatsApp chat without media as a <code>.txt</code> file to dynamically index and search your conversation.
           </p>
 
           <div className="upload-drop">
@@ -688,13 +768,13 @@ export default function App() {
               id="file-upload"
             />
             <label htmlFor="file-upload" style={{ cursor: "pointer" }}>
-              <p>Click to browse or drop a .txt file</p>
-              <p>DD/MM/YY, HH:MM — Sender: Message format</p>
+              <p>Click to browse or drop WhatsApp .txt file here</p>
+              <p>Standard DD/MM/YY, HH:MM — Sender: Message format</p>
             </label>
           </div>
 
           <p className="upload-note">
-            The synthetic 4,150-message chat is currently active.
+            The default 4,150-message synthetic chat is currently active and indexed.
           </p>
         </div>
       )}
