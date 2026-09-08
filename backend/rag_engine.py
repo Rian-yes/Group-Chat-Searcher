@@ -386,11 +386,12 @@ class RAGEngine:
         Executes hybrid search combining dense similarity, BM25, and metadata routing.
         Returns top matches with surrounding context windows.
         """
-        intent = self.parse_query_intent(query)
+        clean_query = re.sub(r"[?!.,;:]+$", "", query.strip())
+        intent = self.parse_query_intent(clean_query)
         effective_sender = sender_filter or intent["extracted_sender"]
 
         # 1. Compute BM25 scores on content-focused query
-        expanded_query = normalize_hinglish(query)
+        expanded_query = normalize_hinglish(clean_query)
         # Strip sender name from BM25 query so BM25 focuses on content rather than author name
         bm25_query_str = expanded_query
         if effective_sender:
@@ -528,9 +529,14 @@ class RAGEngine:
         top_bm25 = results[0]["bm25_score"]
 
         # Grounding & Relevance Check:
-        # If query has no BM25 lexical match AND dense similarity is below 0.54,
-        # the query does not exist in the chat history.
-        is_relevant = (top_bm25 > 0.0) or (top_dense >= 0.54)
+        # If there is no BM25 lexical or semantic expansion match (bm25 == 0.0),
+        # a generic sentence-frame like "when did we decide on [X]" scores ~0.56 due to anisotropy.
+        # We require dense >= 0.62 for queries with zero keyword hits.
+        if top_bm25 == 0.0:
+            is_relevant = (top_dense >= 0.62)
+        else:
+            is_relevant = (top_bm25 > 0.0) and (top_dense >= 0.48 or top_score >= 0.50)
+
         if not is_relevant or top_score < 0.40:
             return {
                 "answer": f"No relevant conversation found in the group chat for '{query}'. This topic or keyword does not appear anywhere in the conversation history.",
