@@ -499,15 +499,21 @@ export default function App() {
               <div
                 className="glass-card"
                 style={{
-                  background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.9))",
-                  borderLeft: "4px solid #06b6d4"
+                  background: answerData.is_relevant === false
+                    ? "linear-gradient(135deg, rgba(30, 27, 20, 0.8), rgba(40, 30, 20, 0.9))"
+                    : "linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.9))",
+                  borderLeft: answerData.is_relevant === false ? "4px solid #f59e0b" : "4px solid #06b6d4"
                 }}
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                    <Sparkles size={18} color="#06b6d4" />
+                    {answerData.is_relevant === false ? (
+                      <AlertCircle size={18} color="#f59e0b" />
+                    ) : (
+                      <Sparkles size={18} color="#06b6d4" />
+                    )}
                     <span style={{ fontWeight: "700", fontSize: "0.95rem", color: "#f8fafc" }}>
-                      AI Synthesized Group Decision Answer
+                      {answerData.is_relevant === false ? "No Relevant Conversation Found" : "AI Synthesized Group Decision Answer"}
                     </span>
                   </div>
                   {answerData.intent && (
@@ -518,31 +524,36 @@ export default function App() {
                         fontSize: "0.7rem",
                         fontWeight: "600",
                         textTransform: "uppercase",
-                        backgroundColor:
-                          answerData.intent.category === "attributed"
-                            ? "rgba(236, 72, 153, 0.15)"
-                            : answerData.intent.category === "temporal"
-                            ? "rgba(245, 158, 11, 0.15)"
-                            : "rgba(6, 182, 212, 0.15)",
-                        color:
-                          answerData.intent.category === "attributed"
-                            ? "#f472b6"
-                            : answerData.intent.category === "temporal"
-                            ? "#fbbf24"
-                            : "#38bdf8",
+                        backgroundColor: answerData.is_relevant === false
+                          ? "rgba(245, 158, 11, 0.15)"
+                          : answerData.intent.category === "attributed"
+                          ? "rgba(236, 72, 153, 0.15)"
+                          : answerData.intent.category === "temporal"
+                          ? "rgba(245, 158, 11, 0.15)"
+                          : "rgba(6, 182, 212, 0.15)",
+                        color: answerData.is_relevant === false
+                          ? "#f59e0b"
+                          : answerData.intent.category === "attributed"
+                          ? "#f472b6"
+                          : answerData.intent.category === "temporal"
+                          ? "#fbbf24"
+                          : "#38bdf8",
                         border: "1px solid rgba(255, 255, 255, 0.1)"
                       }}
                     >
-                      Intent: {answerData.intent.category.replace("_", " ")}
-                      {answerData.intent.extracted_sender ? ` (${answerData.intent.extracted_sender})` : ""}
+                      {answerData.is_relevant === false ? "NO MATCH" : `Intent: ${answerData.intent.category.replace("_", " ")}`}
                     </span>
                   )}
                 </div>
 
-                <p style={{ fontSize: "1.05rem", lineHeight: "1.6", color: "#e2e8f0" }}>
+                <p style={{ fontSize: "1.05rem", lineHeight: "1.6", color: answerData.is_relevant === false ? "#fde68a" : "#e2e8f0" }}>
                   {answerData.answer}
                 </p>
-
+                {answerData.is_relevant === false && (
+                  <p style={{ fontSize: "0.85rem", color: "#94a3b8", marginTop: "0.5rem" }}>
+                    💡 Tip: Search topics actually discussed in this group chat: the Manali trip decision, Goa villa budget, hackathon tech stack, or questions about specific participants (Priya, Aarav, Kabir, Sneha, Rohan, Ananya, Vikram, Neha).
+                  </p>
+                )}
                 {/* Citations */}
                 {answerData.citations && answerData.citations.length > 0 && (
                   <div style={{ marginTop: "1rem", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.5rem" }}>

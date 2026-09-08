@@ -184,13 +184,7 @@ class BM25Index:
             if is_query and t in ENGLISH_STOPWORDS:
                 continue
             tokens.append(t)
-        # Add character 3-grams for non-stopword tokens length >= 4
-        ngrams = []
-        for t in tokens:
-            if len(t) >= 4 and t not in ENGLISH_STOPWORDS:
-                for i in range(len(t) - 2):
-                    ngrams.append(f"ng_{t[i:i+3]}")
-        return tokens + ngrams
+        return tokens
     def fit(self, documents: List[str]):
         self.corpus_size = len(documents)
         self.doc_lengths = []
@@ -521,14 +515,34 @@ class RAGEngine:
         results = search_res["results"]
         if not results:
             return {
-                "answer": "No relevant conversation found in the group chat for this query.",
+                "answer": f"No relevant conversation found in the group chat for '{query}'.",
                 "citations": [],
+                "is_relevant": False,
                 "search_results": search_res
             }
 
         top_match = results[0]["message"]
         top_context = results[0]["context_window"]
+        top_score = results[0]["score"]
+        top_dense = results[0]["dense_score"]
+        top_bm25 = results[0]["bm25_score"]
 
+        # Grounding & Relevance Check:
+        # If query has no BM25 lexical match AND dense similarity is below 0.54,
+        # the query does not exist in the chat history.
+        is_relevant = (top_bm25 > 0.0) or (top_dense >= 0.54)
+        if not is_relevant or top_score < 0.40:
+            return {
+                "answer": f"No relevant conversation found in the group chat for '{query}'. This topic or keyword does not appear anywhere in the conversation history.",
+                "citations": [],
+                "is_relevant": False,
+                "search_results": {
+                    "query": query,
+                    "intent": search_res["intent"],
+                    "total_candidates": len(self.messages),
+                    "results": []
+                }
+            }
         # Grounded answer synthesis
         sender = top_match["sender"]
         timestamp = top_match["timestamp"]
